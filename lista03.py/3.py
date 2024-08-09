@@ -4,6 +4,5 @@ def tabuada(numero):
         resultado = numero * i
         print(f"{numero} x {i} = {resultado}")
 
-# Exemplo de uso da função
 numero = int(input("Digite um número para ver a tabuada: "))
 tabuada(numero)
