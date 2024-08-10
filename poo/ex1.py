@@ -1,42 +1,44 @@
 class Aluno:
-    def __init__(self,nome,matricula,notas = []):
-        self.nome = nome
+    def __init__(self,nome='',matricula='',notas=[]):
         self.matricula = matricula
+        self.nome = nome
         self.notas = notas
-        self.conceito = ''
         self.media = 0
+        self.conceito = ''
         self.resultado = ''
 
     def conceito_aluno(self):
-        if self.media < 4:
-            return 'E'
-        elif self.media < 6:
-            return 'D'
-        elif self.media < 7.5:
-            return 'C'    
-        elif self.media < 9:
-            return 'B'  
-        else:
+        if self.media >= 9:
             return 'A'
-                
+        elif self.media >= 7.5 and self.media < 9:
+            return 'B'
+        elif self.media >= 6 and self.media < 7.5:
+            return 'C'
+        elif self.media >= 4 and self.media < 6:
+            return 'D'
+        else: 
+            return 'E'
+        
     def resultado_aluno(self):
         if self.conceito == 'A' or self.conceito == 'B' or self.conceito == 'C':
-            return 'APROVADO'
+            return 'Aprovado'
         else:
-            return 'REPROVADO'
+            return 'Reprovado'
         
+
 def impressao(aluno):
     print(f'Aluno: {aluno.nome}')
     print(f'Matricula: {aluno.matricula}')
     print(f'Notas: {aluno.notas}')
-    print(f'Media: {round(aluno.media, 1)}')
+    print(f'Média: {round(aluno.media, 1)}')
     print(f'Conceito: {aluno.conceito}')
-    print(f'Resultado: {aluno.resultado}')    
-        
+    print(f'Resultado: {aluno.resultado}')
+
 alunos = []
+
 while True:
     notas = []
-    nome = input('Digite o nome: ')
+    nome = input('Digite seu nome: ')
     matricula = input('Digite sua matricula: ')
     for i in range(3):
         nota = float(input(f'Digite a nota {i+1}: '))
@@ -47,29 +49,33 @@ while True:
     aluno.resultado = aluno.resultado_aluno()
     alunos.append(aluno)
 
-    sair = input('Digite S para Sair Ou enter para continuar: ')
+    s = input('Digite S para sair ou ENTER para continuar: ')
 
-    if sair.upper()== 'S':
+    if s.upper() == 'S':
         break
 
 for aluno in alunos:
-    print('')
     impressao(aluno)
     print('')
 
-busca = input('Digite a matricula que busca: ')
-
-achei = ""
+busca = input('Digite a matricula do aluno que deseja ver os dados: ')
+achei = ''
 for aluno in alunos:
     if busca == aluno.matricula:
-        achei = aluno.matricula
+        achei = aluno
         break
 
 if achei != '':
     impressao(achei)
 else:
-    print('Matricula Deconhecida.')
-    print('')
-print('')
-impressao(aluno)
-print('')
+    print('Matricula não encontrada')
+
+
+'''
+    nota1 = float(input('Digite sua nota 1: '))
+    nota2 = float(input('Digite sua nota 2: '))
+    nota3 = float(input('Digite sua nota 3: '))
+    notas.append(nota1)
+    notas.append(nota2)
+    notas.append(nota3)
+'''

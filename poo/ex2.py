@@ -54,7 +54,7 @@ while True:
                   '\n3- Para impressão da lista deprotutos'
                   '\n4- Para venda do produto'
                   '\n5- Para reajuste'
-                  
+
                   ))   
     if opcao == 1:
         produtos.append(cadastro())
